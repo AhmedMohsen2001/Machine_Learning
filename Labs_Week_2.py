@@ -100,7 +100,35 @@ def linear_regression_scikit():
     y_pred=linear_model.predict(x_train)
     print(f"Predicted value: {y_pred[8:12].reshape((-1,))}\nActual value: {y_train[8:12].reshape((-1,))}\nW: {w}, B: {b}")
     
+def linear_regression_hossam_hassan():
+    path='D:\Engineer\Machine Learning Andrew NG\Machine-Learning-Specialization-Coursera\C1 - Supervised Machine Learning - Regression and Classification\week2\Optional Labs\data\houses.txt'
+    x_train_0, x_train_1, x_train_2, x_train_3, y_train=load_data(path)
+    x_train=np.array([x_train_0, x_train_1, x_train_2, x_train_3]).T
+    mean=np.mean(x_train,axis=0)
+    std=np.std(x_train,axis=0)
+    x_norm=(x_train-mean)/std
+    x_norm=np.hstack((x_norm,np.ones((len(x_norm),1)))) #[x0,x1,x2,x3,1]
+    w=np.array([1,2,3,4,5]).reshape(5,1) #[w0,w1,w2,w3,b]
+    y_pred=x_norm@w
+    w=linear_regression_hossam_hassan_gd(x_norm, y_train, w, 0.01, 10000, 0.01)
+    print((y_train==y_pred).all())
+    
+def linear_regression_hossam_hassan_gd(x, y, w, r=0.01, epoch=100, tol=0.01):
+    m=len(y)
+    Epoch=epoch
+    while epoch>=0:
+        y_pred=x@w
+        loss=(1/(2*m))*np.sum((y_pred-y)**2)
+        print(f"Epoch: {Epoch-epoch}, Loss: {loss}, w: {w.T}")
+        if loss<tol:
+            break
+        dw=(1/m)*(x.T@(y_pred-y))
+        w=w-r*dw
+        epoch-=1
+    return w
+    
 if __name__=="__main__":
     #gd_handmade()
     #gd_scikit()
-    linear_regression_scikit()
+    #linear_regression_scikit()
+    linear_regression_hossam_hassan()
