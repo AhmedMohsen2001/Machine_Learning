@@ -128,7 +128,7 @@ def plot_data(x,w,y,b=None,transpose=0,blocking=False):
     plt.show(block=blocking)
 
 def Logistic_Regression():
-    path="D:\Engineer\Machine Learning Andrew NG\Machine-Learning-Specialization-Coursera\C1 - Supervised Machine Learning - Regression and Classification\week3\C1W3A1\data\ex2data1.txt"
+    path="ex2data1.txt"
     # Scikit
     x_scikit, y_scikit=load_data(path,0,1) # x: m*n
     log_reg=LogisticRegression(max_iter=10000, tol=0.01)
