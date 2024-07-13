@@ -57,7 +57,7 @@ def get_data(mean, std):
     return np.array(x_in).reshape(1,4)
 
 def gd_handmade():
-    path='D:\Engineer\Machine Learning Andrew NG\Machine-Learning-Specialization-Coursera\C1 - Supervised Machine Learning - Regression and Classification\week2\Optional Labs\data\houses.txt'
+    path='houses.txt'
     x_train_0, x_train_1, x_train_2, x_train_3, y_train=load_data(path)
     # x_train_0=np.array([952, 1244, 1947])#.reshape(3,1)
     # x_train_1=np.array([2, 3, 3])#.reshape(3,1)
@@ -113,7 +113,7 @@ def linear_regression_hossam_hassan():
     w=linear_regression_hossam_hassan_gd(x_norm, y_train, w, 0.01, 10000, 0.01)
     y_pred=x_norm@w
     # print((y_train==y_pred).all())
-    print(f"Predicted value: {y_pred[1:5].reshape((-1,))}\nActual value: {y_train[1:5].reshape((-1,))}\nW: {w}")
+    print(f"Predicted value: {y_pred[1:5].reshape((-1,))}\nActual value: {y_train[1:5].reshape((-1,))}\nW: {w.T.reshape((-1,))}")
     
 def linear_regression_hossam_hassan_gd(x, y, w, r=0.01, epoch=100, tol=0.01):
     m=len(y)
