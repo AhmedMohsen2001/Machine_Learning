@@ -2,7 +2,6 @@ import numpy as np
 from sklearn.linear_model import SGDRegressor, LinearRegression
 from sklearn.preprocessing import StandardScaler
 
-
 def load_data(path):
     x0=list()
     x1=list()
