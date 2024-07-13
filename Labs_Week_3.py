@@ -2,7 +2,7 @@ import numpy as np
 from sklearn.linear_model import SGDRegressor, LinearRegression, LogisticRegression
 from sklearn.preprocessing import StandardScaler
 
-def perceptron_init():                                     #(m,)
+def perceptron_init():                                     
     x_1=np.array([0.5,1,1.5,3,2,1])
     x_2=np.array([1.5,1,0.5,0.5,2,2.5])
     x_0=np.ones((len(x_1),))
@@ -18,7 +18,7 @@ def perceptron_train(x, y, w, r, epoch, tol):
         loss=np.maximum(0,-y*z)
         mask=loss>0
         Loss=np.sum(loss)
-        print(f"Epoch: {Epoch-epoch} Loss: {Loss} w: {w.T}")
+        # print(f"Epoch: {Epoch-epoch} Loss: {Loss} w: {w.T}")
         if Loss*10**16<=tol:
             break
         dw=-((mask*y)@x.T).T
@@ -50,7 +50,7 @@ def logistic_regression_train(x, y, w, r, epoch, tol):
         y_hat=1/(1+np.exp(-z))
         loss=-y*np.log(y_hat)-(1-y)*np.log(1-y_hat)
         Loss=np.sum(loss)
-        print(f"Epoch: {Epoch-epoch} Loss: {Loss} w: {w.T}")
+        # print(f"Epoch: {Epoch-epoch} Loss: {Loss} w: {w.T}")
         if Loss<=tol:
             break
         dw=x@(y_hat-y).T
@@ -85,9 +85,7 @@ def scikit_LR():
     y_hat=((1/(1+np.exp(-z)))>=0.5).astype(int).reshape(-1,)
     y_hat_LR=log_reg.predict(x.T).reshape(-1,)
     print(f"y_hat: {y_hat} y_hat_LR: {y_hat_LR} y: {y}")
-
-# X_train = np.array([[0.5, 1.5], [1,1], [1.5, 0.5], [3, 0.5], [2, 2], [1, 2.5]])  #(m,n)
-# y_train = np.array([0, 0, 0, 1, 1, 1])      
-#perceptron()
-# logistic_regression()
+        
+perceptron()
+logistic_regression()
 scikit_LR()
