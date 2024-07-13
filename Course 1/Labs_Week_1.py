@@ -52,5 +52,4 @@ if __name__=="__main__":
     w, b=train(x_train,y_train,w,b,0.01,10000,0.001)
     y_expected=w*x_train+b
     plot_data(x_train,y_expected,'g')
-    
     plt.show()
