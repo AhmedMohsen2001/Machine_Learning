@@ -4,6 +4,7 @@ from sklearn.linear_model import SGDRegressor, LinearRegression, LogisticRegress
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import log_loss
 
+
 def perceptron_init():                                     
     x_1=np.array([0.5,1,1.5,3,2,1])
     x_2=np.array([1.5,1,0.5,0.5,2,2.5])
